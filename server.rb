@@ -2,6 +2,8 @@ require 'sinatra/base'
 require './lib/player'
 require './lib/game'
 
+enable :sessions 
+
 class RockPaperScissors < Sinatra::Base
   get '/' do
     erb :index
@@ -12,7 +14,7 @@ class RockPaperScissors < Sinatra::Base
   end
 
   post '/register' do 
-    @player = params[:name]
+    session[:name] = params[:name]
   	erb :play	
   end
 

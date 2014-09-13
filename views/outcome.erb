@@ -1,4 +1,4 @@
-<div> 
+<body> 
 	RESULTS:
 	<% if @game.winner == "Draw" %>
  		<h1> it was a draw </h1>
@@ -7,9 +7,10 @@
 	<% else %>
 		<h1> You won, with <%= @game.winner.pick %> </h1>
 	<%end%>
-</div>
+</body>
 
 <form action="/register" method="POST">
+<input type="hidden" name="name" value=<%=session[:name]%>>
 <button>Play again!</button>
 
 

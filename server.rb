@@ -2,9 +2,10 @@ require 'sinatra/base'
 require './lib/player'
 require './lib/game'
 
-enable :sessions 
-
 class RockPaperScissors < Sinatra::Base
+
+  enable :sessions
+
   get '/' do
     erb :index
   end
@@ -14,7 +15,7 @@ class RockPaperScissors < Sinatra::Base
   end
 
   post '/register' do 
-    session[:name] = params[:name]
+    session[:name] = params[:name] if params[:name]
   	erb :play	
   end
 
@@ -33,7 +34,9 @@ class RockPaperScissors < Sinatra::Base
   	comp
   end
 
-
+configure :production do
+  require 'newrelic_rpm'
+end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

@@ -1,8 +1,8 @@
-<h1>Pick your choice <%= @player%></h1>
+<h1>Pick your choice <%= session[:name]%></h1>
 
 <form action="/play" method="POST">
 	<button name="pick" value="Paper">Paper</button>
 	<button name="pick" value="Rock">Rock</button>
 	<button name="pick" value="Scissors">Scissors</button>
-	<input type="hidden" name="name" value=<%=@name%>>
+	<input type="hidden" name="name" value=<%=session[:name]%>>
 </form>
